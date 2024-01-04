@@ -8,6 +8,10 @@ module.exports = {
         tertiary: "#0A192F",
       },
     },
+    screens: {
+      lg: { max: "2023px" },
+      sm: { max: "639px" },
+    },
   },
   plugins: [],
 };
