@@ -10,7 +10,7 @@ module.exports = {
     },
     screens: {
       lg: { max: "2023px" },
-      sm: { max: "639px" },
+      sm: { max: "1000px" },
     },
   },
   plugins: [],
