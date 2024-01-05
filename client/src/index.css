@@ -7,3 +7,15 @@
 body {
   font-family: "Inter", sans-serif;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: primary;
+}

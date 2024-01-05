@@ -1,16 +1,16 @@
 import React from "react";
 import SectionTitle from "../../components/SectionTitle";
-import { experiences } from "../../resources/experiences";
+import { projects } from "../../resources/projects";
 
-function Experiences() {
+function Projects() {
   const [selectedPeriod, setSelectedPeriod] = React.useState(null);
   return (
     <div>
-      <SectionTitle title="Experiences" />
+      <SectionTitle title="Projects" />
 
       <div className="flex py-10 gap-20 sm:flex-col">
         <div className="flex flex-col gap-10 border-l-2 border-primary sm:flex-row sm:overflow-x-scroll sm:w-full">
-          {experiences.map((experience, index) => (
+          {projects.map((projects, index) => (
             <div
               className="cursor-pointer"
               onClick={() => setSelectedPeriod(index)}
@@ -22,7 +22,7 @@ function Experiences() {
                     : "text-white"
                 }`}
               >
-                {experience.period}
+                {projects.period}
               </h1>
             </div>
           ))}
@@ -30,13 +30,13 @@ function Experiences() {
 
         <div className="flex flex-col gap-5">
           <h1 className="text-white text-2xl font-semibold">
-            {experiences[selectedPeriod]?.title}
+            {projects[selectedPeriod]?.title}
           </h1>
           <p className="text-white text-l font-semibold">
-            {experiences[selectedPeriod]?.company}
+            {projects[selectedPeriod]?.company}
           </p>
           <p className="text-white text-l font-semibold">
-            {experiences[selectedPeriod]?.description}
+            {projects[selectedPeriod]?.description}
           </p>
         </div>
       </div>
@@ -44,4 +44,4 @@ function Experiences() {
   );
 }
 
-export default Experiences;
+export default Projects;
