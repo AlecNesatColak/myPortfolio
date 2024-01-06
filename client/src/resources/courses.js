@@ -1,7 +1,7 @@
 export const courses = [
     {
       _id: "1",
-      title: "Grocery Replenishment Specialist",
+      title: " ReplenishmeGrocerynt Specialist",
       company: "Publix Super Markets",
       location: "Bellair Bluffs, FL",
       period: "August 2019 - April 2023",

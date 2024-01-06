@@ -22,7 +22,7 @@ function Projects() {
                     : "text-white"
                 }`}
               >
-                {projects.period}
+                {projects.title}
               </h1>
             </div>
           ))}
@@ -33,7 +33,7 @@ function Projects() {
             {projects[selectedPeriod]?.title}
           </h1>
           <p className="text-white text-l font-semibold">
-            {projects[selectedPeriod]?.company}
+            {projects[selectedPeriod]?.Technologies}
           </p>
           <p className="text-white text-l font-semibold">
             {projects[selectedPeriod]?.description}

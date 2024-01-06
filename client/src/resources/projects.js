@@ -1,26 +1,20 @@
 export const projects = [
   {
     _id: "1",
-    title: "Grocery Replenishment Specialist",
-    company: "Publix Super Markets",
-    location: "Bellair Bluffs, FL",
-    period: "August 2019 - April 2023",
+    title: "BiteNav",
+    Technologies: "FastAPI, React Native, PostgreSQL, Docker",
     description: "",
   },
   {
     _id: "2",
-    title: "Registered Pharmacy Technician",
-    company: "Publix Super Markets",
-    location: "Bellair Bluffs, FL",
-    period: "May 2019 - Present",
+    title: "Cafe Turkiye",
+    Technologies: "React, Node.js, Express, MongoDB",
     description: "",
   },
   {
     _id: "3",
-    title: "Software Developer Intern",
-    company: "PWC",
-    location: "Tampa, FL",
-    period: "June 2024",
+    title: "Pharmacy Simulator",
+    Technologies: "Java, JavaFX, MySQL",
     description: "",
   },
 ];

@@ -7,6 +7,7 @@ import Courses from "./Courses";
 import Projects from "./Projects";
 import Contact from "./Contact";
 import Footer from "./Footer";
+import LeftSider from "./LeftSider";
 
 function Home() {
   return (
@@ -17,9 +18,10 @@ function Home() {
         <About />
         <Experiences />
         <Courses />
-        <Projects /> 
-        <Contact />  
-        <Footer /> 
+        <Projects />
+        <Contact />
+        <Footer />
+        <LeftSider />
       </div>
     </div>
   );
