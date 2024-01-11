@@ -1,9 +1,11 @@
 import React from "react";
 import SectionTitle from "../../components/SectionTitle";
-import { courses } from "../../resources/courses";
+import { useSelector } from "react-redux";
 
 function Courses() {
-  const [selectedPeriod, setSelectedPeriod] = React.useState(null);
+  const [selectedPeriod, setSelectedPeriod] = React.useState(0);
+  const {portfolioData} = useSelector((state) => state.root);
+  const {courses} = portfolioData;
   return (
     <div>
       <SectionTitle title="Courses" />
@@ -22,7 +24,7 @@ function Courses() {
                     : "text-white"
                 }`}
               >
-                {courses.period}
+                {courses.title}
               </h1>
             </div>
           ))}
@@ -32,9 +34,6 @@ function Courses() {
           <h1 className="text-white text-2xl font-semibold">
             {courses[selectedPeriod]?.title}
           </h1>
-          <p className="text-white text-l font-semibold">
-            {courses[selectedPeriod]?.company}
-          </p>
           <p className="text-white text-l font-semibold">
             {courses[selectedPeriod]?.description}
           </p>

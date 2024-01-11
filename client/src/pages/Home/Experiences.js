@@ -1,10 +1,11 @@
 import React from "react";
 import SectionTitle from "../../components/SectionTitle";
-import { experiences } from "../../resources/experiences";
+import { useSelector } from "react-redux";
 
 function Experiences() {
-  const [selectedPeriod, setSelectedPeriod] = React.useState(null);
-  return (
+  const [selectedPeriod, setSelectedPeriod] = React.useState(0);
+  const { loading, portfolioData } = useSelector((state) => state.root);
+  const { experiences } = portfolioData;  return (
     <div>
       <SectionTitle title="Experiences" />
 
