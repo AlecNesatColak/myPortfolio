@@ -30,4 +30,38 @@ router.get("/get-portfolio-data", async (req, res) => {
   }
 });
 
+router.post("/update-intro", async (req, res) => {
+  try {
+    const updatedIntro = await Intro.findOneAndUpdate(
+      { _id: req.body._id },
+      req.body,
+      { new: true }
+    );
+    res.status(200).send({
+      data: updatedIntro,
+      success: true,
+      message: "Intro updated successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+router.post("/update-about", async (req, res) => {
+  try {
+    const updatedAbout = await About.findOneAndUpdate(
+      { _id: req.body._id },
+      req.body,
+      { new: true }
+    );
+    res.status(200).send({
+      data: updatedAbout,
+      success: true,
+      message: "About updated successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 module.exports = router;
