@@ -12,7 +12,7 @@ import LeftSider from "./LeftSider";
 
 function Home() {
   const { loading, portfolioData } = useSelector((state) => state.root);
-  
+
   return (
     <div>
       <Header />
