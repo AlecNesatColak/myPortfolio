@@ -31,9 +31,6 @@ function Projects() {
         </div>
 
         <div className="flex flex-col gap-5">
-          <h1 className="text-white text-2xl font-semibold">
-            {projects[selectedPeriod]?.title}
-          </h1>
           <p className="text-white text-l font-semibold">
             {projects[selectedPeriod]?.Technologies}
           </p>

@@ -1,10 +1,9 @@
-import { Form, Input, Modal } from "antd";
+import { Form, Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { ShowLoading, HideLoading, ReloadData } from "../../redux/rootSlice";
 import axios from "axios";
 import { message } from "antd";
 import React from "react";
-import { set } from "mongoose";
 
 function Experiences() {
   const dispatch = useDispatch();
@@ -12,7 +11,7 @@ function Experiences() {
   const { experiences } = portfolioData;
   const [showAddEditModal, setShowAddEditModal] = React.useState(false);
   const [selectedItemForEdit, setSelectedItemForEdit] = React.useState(null);
-  const [type = "add", setType] = React.useState(null);
+  const [type = "add", setType] = React.useState("add");
 
   const onFinish = async (values) => {
     try {
