@@ -1,26 +1,30 @@
-import { Form, Input } from "antd";
+import { Form, Input, Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import React from "react";
-import { ShowLoading, HideLoading } from "../../redux/rootSlice";
+import { ShowLoading, HideLoading, ReloadData } from "../../redux/rootSlice";
 import axios from "axios";
 import { message } from "antd";
+import React from "react";
 
 function Experiences() {
+  const dispatch = useDispatch();
   const { portfolioData } = useSelector((state) => state.root);
   const { experiences } = portfolioData;
-  const dispatch = useDispatch();
+  const [showAddEditModal, setShowAddEditModal] = React.useState(false);
+  const [selectedItemForEdit, setSelectedItemForEdit] = React.useState(null);
 
   const onFinish = async (values) => {
-    console.log(values);
     try {
       dispatch(ShowLoading());
-      const response = await axios.post("/api/portfolio/update-experiences", {
-        ...values,
-        _id: portfolioData.experiences._id,
-      });
+      const response = await axios.post(
+        "/api/portfolio/add-experience",
+        values
+      );
       dispatch(HideLoading());
       if (response.data.success) {
         message.success(response.data.message);
+        setShowAddEditModal(false);
+        dispatch(HideLoading());
+        dispatch(ReloadData(true));
       } else {
         message.error(response.data.message);
       }
@@ -32,6 +36,17 @@ function Experiences() {
 
   return (
     <div>
+      <div className="flex justify-end">
+        <button
+          className="bg-primary text-white px-5 py-2 rounded"
+          onClick={() => {
+            setSelectedItemForEdit(null);
+            setShowAddEditModal(true);
+          }}
+        >
+          Add Experience
+        </button>
+      </div>
       <div className="grid grid-cols-4 gap-5">
         {experiences.map((experience) => (
           <div className="shadow border p-5 border-gray-400 flex flex-col gap-5">
@@ -55,6 +70,43 @@ function Experiences() {
           </div>
         ))}
       </div>
+
+      <Modal
+        open={showAddEditModal}
+        title={selectedItemForEdit ? "Edit Experience" : "Add Experience"}
+        footer={null}
+        onCancel={() => setShowAddEditModal(false)}
+      >
+        <Form layout="vertical" onFinish={onFinish} >
+          <Form.Item name="period" label="Period">
+            <input placeholder="Period" />
+          </Form.Item>
+          <Form.Item name="company" label="Company">
+            <input placeholder="Company" />
+          </Form.Item>
+          <Form.Item name="title" label="Title">
+            <input placeholder="Title" />
+          </Form.Item>
+          <Form.Item name="description" label="Description">
+            <input placeholder="Description" />
+          </Form.Item>
+
+          <div className="flex justify-end w-full">
+            <button
+              className="border border-gray-500 text-secondary px-10 py-3 rounded ml-5"
+              onClick={() => setShowAddEditModal(false)}
+            >
+              Cancel
+            </button>
+            <button
+              className=" bg-secondary text-primary px-10 py-3 rounded ml-5"
+              type="submit"
+            >
+              {selectedItemForEdit ? "Update" : "Add"}
+            </button>
+          </div>
+        </Form>
+      </Modal>
     </div>
   );
 }
