@@ -156,4 +156,50 @@ router.post("/delete-project", async (req, res) => {
   }
 });
 
+router.post("/add-course", async (req, res) => {
+  try {
+    const course = new Course(req.body);
+    await course.save();
+    res.status(200).send({
+      data: course,
+      success: true,
+      message: "Course added successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+router.post("/update-course", async (req, res) => {
+  try {
+    const experience = await Course.findOneAndUpdate(
+      { _id: req.body._id },
+      req.body,
+      { new: true }
+    );
+    res.status(200).send({
+      data: course,
+      success: true,
+      message: "Course updated successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+router.post("/delete-course", async (req, res) => {
+  try {
+    const course = await Course.findByIdAndDelete({
+      _id: req.body._id,
+    });
+    res.status(200).send({
+      data: course,
+      success: true,
+      message: "Course deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 module.exports = router;

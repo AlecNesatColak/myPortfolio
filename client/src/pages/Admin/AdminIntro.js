@@ -7,6 +7,7 @@ import { message } from "antd";
 
 function AdminIntro() {
   const { portfolioData } = useSelector((state) => state.root);
+  const [form] = Form.useForm();
   const dispatch = useDispatch();
 
   const onFinish = async (values) => {
@@ -18,6 +19,7 @@ function AdminIntro() {
         _id: portfolioData.intro._id,
       });
       dispatch(HideLoading());
+      form.resetFields();
       if (response.data.success) {
         message.success(response.data.message);
       } else {
@@ -31,6 +33,7 @@ function AdminIntro() {
   return (
     <div>
       <Form
+        form={form}
         onFinish={onFinish}
         layout="vertical"
         initialValues={portfolioData.intro}

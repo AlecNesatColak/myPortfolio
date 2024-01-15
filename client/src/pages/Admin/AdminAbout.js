@@ -8,6 +8,7 @@ import { message } from "antd";
 function AdminAbout() {
   const { portfolioData } = useSelector((state) => state.root);
   const dispatch = useDispatch();
+  const [form] = Form.useForm();
 
   const onFinish = async (values) => {
     console.log(values);
@@ -29,6 +30,7 @@ function AdminAbout() {
         _id: portfolioData.about._id,
       });
       dispatch(HideLoading());
+      form.resetFields();
       if (response.data.success) {
         message.success(response.data.message);
       } else {
@@ -42,6 +44,7 @@ function AdminAbout() {
   return (
     <div>
       <Form
+        form={form}
         onFinish={onFinish}
         layout="vertical"
         initialValues={{

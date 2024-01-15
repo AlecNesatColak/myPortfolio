@@ -6,6 +6,7 @@ import AdminIntro from "./AdminIntro";
 import AdminAbout from "./AdminAbout";
 import Experiences from "./AdminExperiences";
 import Projects from "./AdminProjects";
+import Courses from "./AdminCourses";
 
 const { TabPane } = Tabs;
 function Admin() {
@@ -27,6 +28,9 @@ function Admin() {
             </TabPane>
             <TabPane tab="Projects" key="4">
               <Projects />
+            </TabPane>
+            <TabPane tab="Courses" key="5">
+              <Courses />
             </TabPane>
           </Tabs>
         </div>

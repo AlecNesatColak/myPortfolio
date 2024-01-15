@@ -12,6 +12,7 @@ function Experiences() {
   const [showAddEditModal, setShowAddEditModal] = React.useState(false);
   const [selectedItemForEdit, setSelectedItemForEdit] = React.useState(null);
   const [type = "add", setType] = React.useState("add");
+  const [form] = Form.useForm();
 
   const onFinish = async (values) => {
     try {
@@ -32,6 +33,7 @@ function Experiences() {
         setSelectedItemForEdit(null);
         dispatch(HideLoading());
         dispatch(ReloadData(true));
+        form.resetFields();
       } else {
         message.error(response.data.message);
       }
@@ -121,6 +123,7 @@ function Experiences() {
           }}
         >
           <Form
+            form={form}
             layout="vertical"
             onFinish={onFinish}
             initialValues={selectedItemForEdit}
