@@ -12,7 +12,7 @@ function Courses() {
   const [showAddEditModal, setShowAddEditModal] = React.useState(false);
   const [selectedItemForEdit, setSelectedItemForEdit] = React.useState(null);
   const [type = "add", setType] = React.useState("add");
-    const [form] = Form.useForm();
+  const [form] = Form.useForm();
 
   const onFinish = async (values) => {
     try {
@@ -76,7 +76,7 @@ function Courses() {
           Add Course
         </button>
       </div>
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-3 gap-5 mt-5 sm:grid-cols-1">
         {courses.map((course) => (
           <div className="shadow border p-5 border-gray-400 flex flex-col gap-5">
             <h1 className="text-xl font-semibold text-primary">
@@ -119,7 +119,7 @@ function Courses() {
           }}
         >
           <Form
-          form={form}
+            form={form}
             layout="vertical"
             onFinish={onFinish}
             initialValues={selectedItemForEdit}

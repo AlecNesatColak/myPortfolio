@@ -78,7 +78,7 @@ function Projects() {
           Add Project
         </button>
       </div>
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-3 gap-5 mt-5 sm:grid-cols-1">
         {projects.map((project) => (
           <div className="shadow border p-5 border-gray-400 flex flex-col gap-5">
             <h1 className="text-xl font-semibold text-primary">

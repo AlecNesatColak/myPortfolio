@@ -172,7 +172,7 @@ router.post("/add-course", async (req, res) => {
 
 router.post("/update-course", async (req, res) => {
   try {
-    const experience = await Course.findOneAndUpdate(
+    const course = await Course.findOneAndUpdate(
       { _id: req.body._id },
       req.body,
       { new: true }
@@ -197,6 +197,80 @@ router.post("/delete-course", async (req, res) => {
       success: true,
       message: "Course deleted successfully",
     });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+router.post("/update-contact", async (req, res) => {
+  try {
+    const contact = await Contact.findOneAndUpdate(
+      {
+        _id: req.body._id,
+      },
+      req.body,
+      { new: true }
+    );
+    res.status(200).send({
+      data: contact,
+      success: true,
+      message: "Contact updated successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+router.post("/add-contact", async (req, res) => {
+  try {
+    const contact = new Contact(req.body);
+    await contact.save();
+    res.status(200).send({
+      data: contact,
+      success: true,
+      message: "Contact added successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+router.post("/delete-contact", async (req, res) => {
+  try {
+    const contact = await Contact.findByIdAndDelete({
+      _id: req.body._id,
+    });
+    res.status(200).send({
+      data: contact,
+      success: true,
+      message: "Contact deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// admin login
+
+router.post("/admin-login", async (req, res) => {
+  try {
+    const user = await User.findOne({
+      username: req.body.username,
+      password: req.body.password,
+    });
+    if (user) {
+      res.status(200).send({
+        data: user,
+        success: true,
+        message: "Login successful",
+      });
+    } else {
+      res.status(200).send({
+        data: null,
+        success: false,
+        message: "Invalid username or password",
+      });
+    }
   } catch (error) {
     res.status(500).send(error);
   }

@@ -76,7 +76,7 @@ function Experiences() {
           Add Experience
         </button>
       </div>
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-4 gap-5 mt-5 sm:grid-cols-1">
         {experiences.map((experience) => (
           <div className="shadow border p-5 border-gray-400 flex flex-col gap-5">
             <h1 className="text-xl font-semibold text-primary">
